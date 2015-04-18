@@ -35,8 +35,10 @@ public class GoToDangerousActivity extends Activity {
 	private void startDangerousActivity() {
 
 		Log.i(TAG, "Entered startDangerousActivity()");
-
-		startActivity(new Intent(DANGEROUS_ACTIVITY_ACTION));
+		Intent dangerousActivity =new Intent(DANGEROUS_ACTIVITY_ACTION); 
+		if (dangerousActivity.resolveActivity(getPackageManager()) != null) {
+		    startActivity(dangerousActivity);
+		}
 		
 
 	}

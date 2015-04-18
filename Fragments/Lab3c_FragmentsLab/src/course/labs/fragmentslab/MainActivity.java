@@ -26,7 +26,11 @@ public class MainActivity extends Activity implements
 			mFriendsFragment = new FriendsFragment();
 
 			//TODO 1 - add the FriendsFragment to the fragment_container
-			
+			FragmentTransaction transaction = getFragmentManager().beginTransaction();
+			transaction.add(R.id.fragment_container, mFriendsFragment);
+
+			// Commit the transaction
+			transaction.commit();
 			
 			
 
@@ -66,8 +70,12 @@ public class MainActivity extends Activity implements
 
 			//TODO 2 - replace the fragment_container with the FeedFragment
 			
+			FragmentTransaction transaction = getFragmentManager().beginTransaction();
+			transaction.replace(R.id.fragment_container, mFeedFragment);
+			transaction.addToBackStack(null);
 
-			
+			// Commit the transaction
+			transaction.commit();
 
 			// execute transaction now
 			getFragmentManager().executePendingTransactions();
